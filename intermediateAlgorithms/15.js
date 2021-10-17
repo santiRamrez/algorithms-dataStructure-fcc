@@ -3,19 +3,19 @@
 // Drop it
 
 function dropElements(arr, func) {
-  let newArr = [...arr];
-  arr.forEach((number, i) => {
-    if (func(number)) {
-      newArr.splice(0, i + 1);
-    } else {
-      newArr = [];
+  let output = [...arr];
+  for (let i = 0; i <= arr.length; i++) {
+    if (func(arr[i])) {
+      return output.slice(i);
     }
-  });
-  return newArr;
+    if (i === arr.length && !func(arr[i])) {
+      return [];
+    }
+  }
 }
 
 let test = dropElements([0, 1, 0, 1], function (n) {
-  return n === 1;
+  return n === 2;
 });
 
 console.log(test);
